@@ -8,7 +8,7 @@ import summarizeRouter from "./routes/summarize.js";
 import { formatForNarration } from "./services/narrationFormatter.js";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 
 app.use(
   cors({
