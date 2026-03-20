@@ -36,21 +36,17 @@ export default function UploadPDF({ onFileSelected, uploadProgress }) {
   };
 
   const borderClasses = isDragging
-    ? "border-accent bg-accentSoft/30"
-    : "border-dashed border-slate-600 bg-slate-900/40";
+    ? "border-accent bg-accentSoft/10"
+    : "border-dashed border-slate-700/80 bg-slate-950/20";
 
   return (
-    <div className="space-y-3">
-      <label className="block text-sm font-medium text-slate-200">
-        Upload PDF Book
-      </label>
-      <div
-        className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 p-8 text-center transition ${borderClasses}`}
-        onDrop={onDrop}
-        onDragOver={onDragOver}
-        onDragLeave={onDragLeave}
-        onClick={() => document.getElementById("pdf-input").click()}
-      >
+    <div
+      className={`flex cursor-pointer flex-col items-center justify-center rounded-3xl border-2 p-10 text-center transition ${borderClasses}`}
+      onDrop={onDrop}
+      onDragOver={onDragOver}
+      onDragLeave={onDragLeave}
+      onClick={() => document.getElementById("pdf-input").click()}
+    >
         <input
           id="pdf-input"
           type="file"
@@ -58,26 +54,30 @@ export default function UploadPDF({ onFileSelected, uploadProgress }) {
           className="hidden"
           onChange={(e) => handleFiles(e.target.files)}
         />
-        <div className="mb-3 h-10 w-10 rounded-full bg-accentSoft/60 text-accent flex items-center justify-center">
-          <span className="text-2xl">📚</span>
+
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-950/40 border border-slate-800 shadow-[0_0_0_4px_rgba(99,102,241,0.12)]">
+          <span className="text-2xl" aria-hidden>
+            📄
+          </span>
         </div>
-        <p className="text-sm text-slate-200">
+
+        <p className="mt-5 text-sm font-semibold text-slate-200">
           Drag &amp; drop your PDF here, or{" "}
-          <span className="font-semibold text-accent underline">
+          <span className="text-accent underline underline-offset-2">
             browse files
           </span>
         </p>
-        <p className="mt-1 text-xs text-slate-400">
-          We only process the file locally with your own AI server.
+        <p className="mt-2 text-xs text-slate-400">
+          We only process the file locally with your own OS/browser.
         </p>
 
         {typeof uploadProgress === "number" && uploadProgress > 0 && (
-          <div className="mt-4 w-full">
-            <div className="flex justify-between text-xs text-slate-300 mb-1">
-              <span>Upload progress</span>
+          <div className="mt-6 w-full">
+            <div className="flex justify-between text-[11px] text-slate-300 mb-2">
+              <span>Upload</span>
               <span>{uploadProgress}%</span>
             </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
+            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-900/70">
               <div
                 className="h-full rounded-full bg-accent transition-all"
                 style={{ width: `${uploadProgress}%` }}
@@ -86,7 +86,6 @@ export default function UploadPDF({ onFileSelected, uploadProgress }) {
           </div>
         )}
       </div>
-    </div>
   );
 }
 

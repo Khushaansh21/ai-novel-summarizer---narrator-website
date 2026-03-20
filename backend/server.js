@@ -36,7 +36,7 @@ app.get("/", (_req, res) => {
   res.json({ status: "ok", message: "Book Narrator backend running" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Backend server listening on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
 

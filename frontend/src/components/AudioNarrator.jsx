@@ -252,81 +252,80 @@ export default function AudioNarrator({ text }) {
     typeof window !== "undefined" ? getSupportMessage() : null;
 
   return (
-    <div className="space-y-3 rounded-2xl border border-slate-800 bg-slate-900/60 p-4">
-      <div className="flex items-center justify-between gap-4">
+    <div className="rounded-2xl border border-slate-800/70 bg-gradient-to-b from-slate-900/30 to-slate-950/10 p-5">
+      <div className="flex items-start justify-between gap-4">
         <div>
-          <h2 className="text-sm font-semibold text-slate-100">
-            Audio Narration
-          </h2>
-          <p className="text-xs text-slate-400">
+          <h2 className="text-sm font-semibold text-slate-100">Audio Narration</h2>
+          <p className="mt-1 text-xs text-slate-400">
             Listen to the summary as a narrated story.
           </p>
         </div>
+
         <div className="flex items-center gap-2">
           <button
             onClick={handlePlay}
             disabled={!text || !!supportMessage}
-            className="rounded-full bg-accent px-3 py-1.5 text-xs font-semibold text-white shadow-sm disabled:cursor-not-allowed disabled:bg-slate-700"
+            className="rounded-full bg-accent px-4 py-1.5 text-xs font-semibold text-white shadow-sm disabled:cursor-not-allowed disabled:bg-slate-800"
           >
             {isPlaying && !isPaused ? "Playing..." : "Play"}
           </button>
           <button
             onClick={handlePause}
             disabled={!isPlaying || !!supportMessage}
-            className="rounded-full border border-slate-600 px-3 py-1.5 text-xs font-semibold text-slate-100 disabled:cursor-not-allowed disabled:border-slate-800 disabled:text-slate-500"
+            className="rounded-full border border-slate-700 bg-slate-900/20 px-3 py-1.5 text-xs font-semibold text-slate-100 disabled:cursor-not-allowed disabled:border-slate-800 disabled:text-slate-500"
           >
             Pause
           </button>
           <button
             onClick={handleStop}
             disabled={(!isPlaying && !isPaused) || !!supportMessage}
-            className="rounded-full border border-slate-600 px-3 py-1.5 text-xs font-semibold text-slate-100 disabled:cursor-not-allowed disabled:border-slate-800 disabled:text-slate-500"
+            className="rounded-full border border-slate-700 bg-slate-900/20 px-3 py-1.5 text-xs font-semibold text-slate-100 disabled:cursor-not-allowed disabled:border-slate-800 disabled:text-slate-500"
           >
             Stop
           </button>
         </div>
       </div>
 
-      {voices.length > 0 && (
-        <div className="flex flex-col gap-1">
-          <label className="text-[11px] text-slate-400">Narrator voice</label>
-          <select
-            value={selectedVoiceURI}
-            onChange={(e) => setSelectedVoiceURI(e.target.value)}
-            className="w-full rounded-xl border border-slate-700 bg-slate-950/40 px-3 py-2 text-xs text-slate-100 outline-none focus:ring-2 focus:ring-accent/60"
-            disabled={!!supportMessage}
-          >
-            {voices
+      <div className="mt-4 flex flex-col gap-2">
+        <label className="text-[11px] text-slate-400">Narrator voice</label>
+        <select
+          value={selectedVoiceURI}
+          onChange={(e) => setSelectedVoiceURI(e.target.value)}
+          className="w-full rounded-xl border border-slate-700 bg-slate-950/40 px-3 py-2 text-xs text-slate-100 outline-none focus:ring-2 focus:ring-accent/60"
+          disabled={voices.length === 0 || !!supportMessage}
+        >
+          {voices.length === 0 ? (
+            <option value="" disabled>
+              Rishi - en-IN
+            </option>
+          ) : (
+            voices
               .slice()
               .sort((a, b) => (a.lang || "").localeCompare(b.lang || ""))
               .map((v) => (
                 <option key={v.voiceURI} value={v.voiceURI}>
-                  {v.name} — {v.lang}
+                  {v.name} - {v.lang}
                 </option>
-              ))}
-          </select>
-          <p className="text-[11px] text-slate-500">
-            Tip: pick an <span className="text-slate-300">en-IN</span> voice for
-            Indian accent (availability depends on your OS/browser).
-          </p>
-        </div>
-      )}
+              ))
+          )}
+        </select>
+      </div>
 
-      <div className="space-y-1">
+      <div className="mt-4 space-y-2">
         <div className="flex justify-between text-[11px] text-slate-400">
           <span>Narration progress</span>
           <span>{progress}%</span>
         </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+        <div className="h-2 w-full overflow-hidden rounded-full bg-slate-900/60 border border-slate-800">
           <div
-            className="h-full rounded-full bg-accent transition-all"
+            className="h-full rounded-full bg-gradient-to-r from-accent to-sky-500 transition-all"
             style={{ width: `${progress}%` }}
           />
         </div>
       </div>
 
       {supportMessage && (
-        <p className="mt-2 text-[11px] text-amber-300">{supportMessage}</p>
+        <p className="mt-3 text-[11px] text-amber-300">{supportMessage}</p>
       )}
     </div>
   );
