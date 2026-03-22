@@ -302,8 +302,11 @@ export default function AudioNarrator({ text }) {
             voices
               .slice()
               .sort((a, b) => (a.lang || "").localeCompare(b.lang || ""))
-              .map((v) => (
-                <option key={v.voiceURI} value={v.voiceURI}>
+              .map((v, i) => (
+                <option
+                  key={`${v.voiceURI || v.name || "voice"}-${v.lang || ""}-${i}`}
+                  value={v.voiceURI}
+                >
                   {v.name} - {v.lang}
                 </option>
               ))

@@ -1,10 +1,10 @@
 # Project Title
 
-**Booknarrator (Book Narrator)**
+Booknarrator (Book Narrator)
 
 ## Brief One Line Summary
 
-Upload a PDF book, get a story-like summary using **Gemini**, and listen to it with your browser’s **text-to-speech**.
+Upload a PDF book, get a story-like summary using Gemini, and listen to it with your browser’s text-to-speech.
 
 ## Overview
 
@@ -127,7 +127,12 @@ Note: the frontend calls the backend at `http://localhost:4000` (see `frontend/s
 - Add user accounts + save summaries
 - Improve “chapter-like” splitting using headings detection
 
-## Security notes
+## Author & Devleoper
 
-- Do **not** commit API keys.
-- Keep `backend/.env` out of git (add `.env` to `.gitignore`).
+- Khushaansh Kumar 
+- Full Stack Developer
+- Email : Khushaanshkumar@gmail.com
+- LinkedIn : https://www.linkedin.com/in/khushaansh-k-970502264/
+- Portfolio : https://khushaanshkumar.framer.website/
+
+

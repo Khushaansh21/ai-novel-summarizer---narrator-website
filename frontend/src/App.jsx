@@ -133,9 +133,7 @@ function App() {
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
               <div className="rounded-2xl border border-slate-800 bg-slate-950/20 px-4 py-3 shadow-[inset_0_0_0_1px_rgba(99,102,241,0.08)]">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-indigo-500/20 bg-indigo-500/15 text-xs">
-                    ✨
-                  </div>
+                  
                   <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-300">
                     AI SUMMARIES
                   </p>
@@ -147,23 +145,19 @@ function App() {
 
               <div className="rounded-2xl border border-slate-800 bg-slate-950/20 px-4 py-3 shadow-[inset_0_0_0_1px_rgba(99,102,241,0.08)]">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-sky-500/20 bg-sky-500/10 text-xs">
-                    🧠
-                  </div>
+                  
                   <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-300">
-                    LOCAL-FIRST
+                    FAST ANALYZE
                   </p>
                 </div>
                 <p className="mt-2 text-xs font-semibold text-slate-100">
-                  Runs on your machine
+                  Scan large book in seconds
                 </p>
               </div>
 
               <div className="rounded-2xl border border-slate-800 bg-slate-950/20 px-4 py-3 shadow-[inset_0_0_0_1px_rgba(99,102,241,0.08)]">
                 <div className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-indigo-500/20 bg-indigo-500/15 text-xs">
-                    🎙️
-                  </div>
+                 
                   <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-300">
                     AUDIO NARRATION
                   </p>
