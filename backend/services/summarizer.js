@@ -34,7 +34,7 @@ async function postWithRetry(url, body, { timeout, maxRetries = 5 } = {}) {
 
       const backoffMs =
         retryAfterMs ??
-        Math.min(30_000, 800 * 2 ** attempt + Math.floor(Math.random() * 400));
+        Math.min(60000, 2000 * 2 ** attempt);
       attempt += 1;
       // eslint-disable-next-line no-await-in-loop
       await sleep(backoffMs);
@@ -74,6 +74,7 @@ async function callGemini(prompt) {
 }
 
 async function summarizeOne({ text, idx }) {
+  await sleep(1000); // 1 second gap
   const trimmedText =
     text.length > MAX_SECTION_CHARS
       ? text.slice(0, MAX_SECTION_CHARS)
@@ -93,7 +94,7 @@ async function summarizeOne({ text, idx }) {
 
 export async function summarizeChunksInParallel(
   selectedChunks,
-  { maxConcurrency = 5 } = {}
+  { maxConcurrency = 1 } = {}
 ) {
   return runWithConcurrency(selectedChunks, summarizeOne, maxConcurrency);
 }
